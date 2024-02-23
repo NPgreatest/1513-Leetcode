@@ -185,5 +185,3 @@ priority_queue<pair<string,int>,vector<pair<string,int>>, decltype(cmp)> q;
 ```
 
 
-
-1. 链表合并
