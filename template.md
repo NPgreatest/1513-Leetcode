@@ -184,4 +184,82 @@ priority_queue<pair<string,int>,vector<pair<string,int>>, decltype(cmp)> q;
     }
 ```
 
+### 二叉树
+
+#### 非递归遍历二叉树
+
+```C++
+        while(!stk.empty() || root){
+            while(root){
+                // pre-order
+                // res.push_back(root->val);
+                stk.push(root);
+                root=root->left;
+            }
+            root=stk.top();
+            stk.pop();
+            // in-order
+            // res.push_back(root->val);
+            // directly call: root=root->right;
+            // 如果右边没有节点 或者 右边已经遍历过了 ->才输出节点并且pop out
+            if(!root->right || root->right == record){
+                res.push_back(root->val);
+                record = root;
+                root = nullptr;
+            // 如果右边还有节点，往右走
+            }else{
+                stk.push(root);
+                root=root->right;
+            }
+        }
+```
+
+#### Morris 遍历
+
+```C++
+        while (p1 != nullptr) {
+            p2 = p1->left;
+            if (p2 != nullptr) { //左边有东西需要处理
+                // 持续向右走，直到找到尾或者找到链接节点
+                while (p2->right != nullptr && p2->right != p1) {
+                    p2 = p2->right;
+                }
+                if (p2->right == nullptr) { // 如果找到了尾
+                    res.emplace_back(p1->val);
+                    // 链接底下的节点到上面的节点，标记已经遍历过的同时方便遍历回去
+                    p2->right = p1;
+                    p1 = p1->left;
+                    continue;
+                } else { // 如果找到了连接节点，则说明p1已经通过节点跳转回来，直接断联
+                    p2->right = nullptr;
+                    // 中序：push_back(p1->val) 后续：addPath(p1->left);
+                }
+            } else { // 如果左边什么都没有，直接跳过。 后序则删除这个条件
+                res.emplace_back(p1->val);
+            }
+            p1 = p1->right;
+        }
+	// 后序：addPath(root);
+
+
+
+```
+
+### KMP
+
+```C++
+        vector<int> next(n,0);
+        // build next vector
+        for(int i=1,k=0;i<n;i++){
+            while(needle[i] != needle[k] && k) k=next[k-1];
+            if(needle[i] == needle[k]) k++;
+            next[i] = k;
+        }
+        // finding part
+        for(int i=0,k=0;i<haystack.size();i++){
+            while(haystack[i] != needle[k] && k) k=next[k-1];
+            if(haystack[i] == needle[k]) k++;
+            if(k == needle.size()) return i-needle.size()+1;
+        }
+```
 

@@ -1,4 +1,4 @@
-### Ref2Label
+### Seq2Label
 
 * 编码器
 
@@ -42,7 +42,7 @@ Dropout：通过dropout层避免过拟合
 
 
 
-### LSTM
+### LSTM 股票
 
 解决了RNN长时间依赖的梯度爆炸的问题，从序列输入到单个输出
 
@@ -50,10 +50,25 @@ Dropout：通过dropout层避免过拟合
 
 
 
+- **特征提取**：CNN通过卷积层捕捉市场数据中的局部特征，而Bi-LSTM则捕捉时间序列的长期依赖性，即如何根据过去的市场行为来预测未来。
+- **注意力机制**：通过强调重要的时间步，使模型能够在做出预测时更加关注于重要的市场事件或指标，从而提高预测的准确性。
+- **量化投资策略**：模型输出的预测可以用于制定投资策略，比如预测股价上涨的概率，从而指导买卖决策。
+
 相比LSTM，GRU更简洁，只用一个门控即可进行遗忘和选择记忆
+
+
+
+Adam优化器：动态调整每个参数的学习率
+
+
+
+
 
 ### 自我介绍-EN
 
-First and foremost, I would like to express my gratitude for the opportunity to interview with your esteemed company. Currently, I am deeply engaged in studying deep learning and large language models, and I am working on a related graduation design project. I believe my current skills and future development trajectory align perfectly with the requirements of the position. 
+Hello, my name is Liu Yuchen. I'm currently pursuing dual degrees in Computer Science and Finance at East China University of Science and Technology. This coming September, I'll be enrolling in a Master's program in Computer Science at Rice University. It's an honor to be here for this interview.
 
-Due to pursuing a dual degree in my first three years of university and preparing for overseas studies, including English proficiency and academic grades, my internship experiences are not as extensive. However, starting from my senior year, I have dedicated myself to rapidly acquiring relevant knowledge. I have also secured a commendable internship and developed several projects independently. Therefore, I hope your company can offer me the chance to intern here. Thank you.
+Previously, I had the opportunity to intern at Bilibili for four months, where I engaged in backend development using Go. My responsibilities included maintaining and updating the company's microservices framework.
+
+In terms of deep learning, my undergraduate thesis involved developing a Seq2Seq model using a Bidirectional GRU approach, as well as developing applications for the RAG large language model using the langchain framework. Moreover, I've been self-studying deep learning recently. I believe my background aligns well with the position at your company and I'm eager to contribute my skills and learnings.
+

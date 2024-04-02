@@ -38,10 +38,10 @@ https://leetcode.cn/problems/find-the-duplicate-number/
 > **数学推导:** 入环前走了a, 环长L, 环内走了b相遇, 相遇后再走c到达入环点 (b+c==L)
 >
 > 第一次相遇时: 2*step(slow)==step(fast)   
->
->  2(a+b)=a+kL+b 化简后
->
-> a=(k-1)L + c
+> a + b + kL = 2(a+b)
+> a + b = kL
+> a + (L-c) = kL
+> **a = (k-1)L + c**
 >
 > 此时将慢指针重置，两指针正常速度走，相遇后即为入环点
 
